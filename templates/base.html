@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>WunderPebble</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+
+    {% block css_head %} {% endblock %}
+
+    {% block js_head %} {% endblock %}
+
+</head>
+<body>
+
+{% block main %} {% endblock %}
+
+{% block css_foot %} {% endblock %}
+
+{% block js_foot %} {% endblock %}
+
+</body>
+</html>

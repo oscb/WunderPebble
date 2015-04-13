@@ -1,0 +1,10 @@
+{
+  "name": "WunderPebble",
+  "description": "",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "foundation": "5.x.x"
+  }
+}
