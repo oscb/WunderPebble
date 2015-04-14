@@ -19,7 +19,7 @@ class UserView(django.views.generic.TemplateView):
     def get(self, request, *args, **kwargs):
         context = dict()
 
-        if not request.GET or not request.GET['code']:
+        if not (request.GET and 'code' in request.GET):
             csrf = django.template.context_processors.csrf(request)['csrf_token']
             context['link'] = Wunderlist.models.API.login(csrf)
             return self.render_to_response(context)
