@@ -16,15 +16,10 @@ __author__ = 'oscb'
 class UserView(django.views.generic.TemplateView):
     template_name = 'user/login.html'
 
-    def get_context_data(self, **kwargs):
-        context = dict()
-        context['link'] = u"#yoloswag"
-        return context
-
     def get(self, request, *args, **kwargs):
         context = dict()
 
-        if not request.GET:
+        if not request.GET or not request.GET['token']:
             csrf = django.template.context_processors.csrf(request)['csrf_token']
             context['link'] = Wunderlist.models.API.login(csrf)
             return self.render_to_response(context)

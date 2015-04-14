@@ -6,6 +6,10 @@
         <h1>WunderPebble</h1>
         {% if token %}
             {{ token }}
+            <script type="application/javascript">
+                var token = {{ token }};
+            </script>
+            <script type="application/javascript" src="{% static "js/main.js" %}"></script>
         {% else %}
             <a href="{{ link }}" class="button">Login</a>
         {% endif %}

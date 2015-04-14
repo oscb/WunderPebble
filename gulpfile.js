@@ -18,7 +18,7 @@ var gulp         = require('gulp'),
     uglify       = require('gulp-uglify');
 
 var included_js_files = [
-    'static_src/js/src/**/*.js'];
+    'static_src/js/**/*.js'];
 var included_css_files = [];
 var included_font_dirs = ['bower_components/font-awesome/fonts/**'];
 
