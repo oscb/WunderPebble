@@ -1,3 +1,6 @@
+# Python Imports
+import requests
+
 # Django Imports
 import django.template.context_processors
 import django.shortcuts
@@ -19,11 +22,14 @@ class UserView(django.views.generic.TemplateView):
         return context
 
     def get(self, request, *args, **kwargs):
+        context = dict()
+
         if not request.GET:
-            context = dict()
             csrf = django.template.context_processors.csrf(request)['csrf_token']
             context['link'] = Wunderlist.models.API.login(csrf)
             return self.render_to_response(context)
         else:
-            context = self.get_context_data()
+            # TODO: Check if Token State is the same XSS
+            token = Wunderlist.models.API.token(request.GET['code'])
+            context['token'] = token
             return self.render_to_response(context)

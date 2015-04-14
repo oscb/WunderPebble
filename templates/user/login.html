@@ -4,8 +4,11 @@
 
     <div class="">
         <h1>WunderPebble</h1>
-
-        <a href="{{ link }}" class="button">Login</a>
+        {% if token %}
+            {{ token }}
+        {% else %}
+            <a href="{{ link }}" class="button">Login</a>
+        {% endif %}
 
     </div>
 
