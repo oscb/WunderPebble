@@ -8,7 +8,7 @@
         {% if token %}
             {{ token }}
             <script type="application/javascript">
-                var token = {{ token }};
+                var token = "{{ token }}";
             </script>
             <script type="application/javascript" src="{% static "js/main.js" %}"></script>
         {% else %}
