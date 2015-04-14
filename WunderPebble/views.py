@@ -26,5 +26,5 @@ class UserView(django.views.generic.TemplateView):
         else:
             # TODO: Check if Token State is the same XSS
             token = Wunderlist.models.API.token(request.GET['code'])
-            context['token'] = token
+            context['token'] = token['access_token']
             return self.render_to_response(context)
