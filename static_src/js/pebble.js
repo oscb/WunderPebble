@@ -4,6 +4,7 @@
 (function() {
     'use strict';
 
-    location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(token));
+    var options = { token: token };
+    location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(options));
 
 }());

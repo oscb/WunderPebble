@@ -18,13 +18,15 @@ class UserView(django.views.generic.TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = dict()
+        csrf = django.template.context_processors.csrf(request)['csrf_token']
 
         if not (request.GET and 'code' in request.GET):
-            csrf = django.template.context_processors.csrf(request)['csrf_token']
             context['link'] = Wunderlist.models.API.login(csrf)
             return self.render_to_response(context)
         else:
-            # TODO: Check if Token State is the same XSS
-            token = Wunderlist.models.API.token(request.GET['code'])
-            context['token'] = token['access_token']
+            if (request.GET['state'] == csrf):
+                token = Wunderlist.models.API.token(request.GET['code'])
+                context['token'] = token['access_token']
+            else:
+                context['token'] = "ERROR"
             return self.render_to_response(context)
